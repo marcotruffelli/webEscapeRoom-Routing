@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room 6 - Routing</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--Pagina login iniziale-->
+    <div id="login-screen" style="display: block; z-index: 2;">
+        <div class="login-container">
+            <div class="user-icon"><img src="images/iconaUser.png" alt=""></div>
+            <div class="username">Utente</div>
+            <input type="password" class="pin-input" value="12345678" readonly>
+            <button id="submit-btn">→</button>
+            <div class="options">
+            <div class="link">Ho dimenticato il mio PIN</div>
+            <div class="link">Opzioni di accesso</div>
+            </div>
+        </div>
+    </div>
+
+    <!--Finestra timer-->
+    <div class="icon" style="top: 84%; right: 1.8%;" id="icon5">
+        <img src="images/timer.png" alt="">
+        <div>Timer</div>
+    </div>
+    <div class="window" id="timer" style="display: none;">
+        <div class="title-bar" id="title-timer">
+            <span>Timer</span>
+            <div class="controls">
+                <div class="control-button minimize">-</div>
+                <div class="control-button maxTimer">&#9633;</div>
+                <div class="control-button close">x</div>
+            </div>
+        </div>
+        <div>
+            <div id="timerContent-div" style="height: 75px;"><span id="timer-display">00:00</span></div>
+        </div>
+    </div>
+
+    <!--Prompt dei comandi-->
+    <div class="window" id="terminale">
+        <div class="title-bar" id="title-terminale">
+            <span>Prompt dei comandi</span>
+            <div class="controls">
+                <div class="control-button minimize">-</div>
+                <div class="control-button maximize">&#9633;</div>
+                <div class="control-button closeTerminal">x</div>
+            </div>
+        </div>
+        <div class="content terminal-content">Microsoft Windows [Versione 10.0.26100.3775]
+(c) Microsoft Corporation. Tutti i diritti riservati.</div>
+    </div>
+
+    <!--Foto schema rete minigioco 1-->
+    <div class="icon" style="top: 0.9%; right: 1.8%;" id="icon1">
+        <img src="images/iconaRete1.png" alt="">
+        <div>SchemaRete1.png</div>
+    </div>
+    <div class="window" id="fotoRete1" style="display: none; ">
+        <div class="title-bar" id="title-foto1" style="background-color: rgb(66, 66, 66);">
+            <span>SchemaRete1.png</span>
+            <div class="controls">
+                <div class="control-button minimize">-</div>
+                <div class="control-button maximize">&#9633;</div>
+                <div class="control-button close">x</div>
+            </div>
+        </div>
+        <div class="content foto1-content">
+            <img src="images/SchemaRete1.png" alt="">
+        </div>
+    </div>
+
+    
+    <!--Tabella Excel-->
+    <div class="icon" style="top: 9.6%; right: 1.8%;" id="icon2"> <!--top: 7px; left: 4px;-->
+        <img src="images/TabellaR.png" alt="">
+        <div>TabellaR.xlsx</div>
+    </div>
+    <div class="window" id="tabellaExcel" style="display: none;">
+        <div class="title-bar" id="title-excel">
+            <span>TabellaR.xlcs - Excel <button id="salvaExcel"><img  src="images/save.png" alt=""></button></span>
+            <div class="controls">
+                <div class="control-button minimize">-</div>
+                <div class="control-button maximize">&#9633;</div>
+                <div class="control-button close">x</div>
+            </div>
+        </div>
+        <div class="content excel-content">
+            <div class="excel-grid">
+                <div class="headers">
+                    <div class="corner"></div>
+                    <div class="col-headers"></div>
+                </div>
+                <div class="body-with-rows">
+                    <div class="row-headers"></div>
+                    <div class="cells-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Schema rete minigioco 2-->
+    <div class="icon" style="top: 18.3%; right: 1.8%;" id="icon4">
+        <img src="images/iconaRete2.png" alt="">
+        <div>SchemaRete2.png</div>
+    </div>
+    <div class="window" id="fotoRete2" style="display: none;">
+        <div class="title-bar" id="title-foto1" style="background-color: rgb(66, 66, 66);">
+            <span>SchemaRete2.png</span>
+            <div class="controls">
+                <div class="control-button minimize">-</div>
+                <div class="control-button maximize">&#9633;</div>
+                <div class="control-button close">x</div>
+            </div>
+        </div>
+        <div class="content foto1-content">
+            <img src="images/schemaRete2.png" alt="">
+        </div>
+    </div>
+
+    <!--Minigioco RIP-->
+    <div class="icon" style="top: 27%; right: 1.8%;" id="icon3">
+        <img src="images/topo_rip.png" width="45px" height="45px">
+        <div>SchemaRete3.png</div>  
+    </div>
+    <div class="window" id="fotoRete3" style="display: none; background-color: rgb(39, 39, 39); height: fit-content;">
+        <div class="title-bar" id="title-foto2" style="background-color: rgb(66, 66, 66);">
+            <span>SchemaRete3.png</span>
+            <div class="controls">
+                <div class="control-button minimize">-</div>
+                <div class="control-button maximize">&#9633;</div>
+                <div class="control-button close">x</div>
+            </div>
+        </div>
+        <div class="content foto3-content" style="position: relative; overflow: hidden;">
+            <canvas id="myCanvas" width="600" height="600" style="background-color: white; border:1px solid black;"></canvas>
+        </div>
+    </div>
+
+    <!--File di testo iniziale-->
+    <div class="icon" style="top: 0.9%; right: 8.5%;" id="icon6">
+        <img src="images/testo.png" width="34px" height="34px">
+        <div>Istruzioni.txt</div>  
+    </div>
+    <div class="window" id="testo" style="  left: 50%; background-color: rgb(39, 39, 39);">
+        <div class="title-bar" id="title-foto1">
+            <span>Istruzioni.txt</span>
+            <div class="controls">
+                <div class="control-button minimize">-</div>
+                <div class="control-button maximize">&#9633;</div>
+                <div class="control-button close">x</div>
+            </div>
+        </div>
+        <div class="menu-bar">
+                <span style="margin-left: 10px;" class="menu-item">File</span>
+                <span class="menu-item">Modifica</span>
+                <span class="menu-item">Visualizza</span>
+        </div>
+        <div class="content text-content">Benvenuto nella stanza 6! L’argomento di questi enigmi sarà il routing.
+
+Lavori in un’azienda di reti e un tuo collega sbadato ha dimenticato di completare alcune faccende importanti. Purtroppo, il vostro capo se n'è accorto e ha deciso di affidare a te il compito di sistemare la situazione!
+Sarai all’altezza della sfida? Riuscirai a completare i minigiochi e dimostrare di meritare un aumento?
+Risolvi gli enigmi per proseguire!
+
+Per iniziare, ti suggeriamo di digitare ‘help’ sul prompt dei comandi, ti indicherà quali comandi usare!
+
+Una volta completati tutti gli enigmi scoprirai una parola chiave inerente alla stanza successiva! Inseriscila con il comando appropriato per continuare!
+        </div>
+    </div>
+
+    <!--logout-->
+    <div class="loader" style="display: none;">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    </div>
+
+    <script src="app.js"></script>
+    
+</body>
+</html>
